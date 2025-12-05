@@ -281,11 +281,9 @@ End every call with confirmation, details of the call, and a polite closing mess
             processor.onaudioprocess = (e) => {
               const inputData = e.inputBuffer.getChannelData(0);
               const pcmBlob = createBlob(inputData);
-              if (sessionRef.current) {
-                sessionPromise.then((session) => {
-                   try { session.sendRealtimeInput({ media: pcmBlob }); } catch(e) {}
-                });
-              }
+              sessionPromise.then((session) => {
+                 session.sendRealtimeInput({ media: pcmBlob });
+              });
             };
             source.connect(processor);
             processor.connect(inputCtx.destination);
