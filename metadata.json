@@ -1,0 +1,7 @@
+{
+  "name": "Copy of the full version DentiCall AI - The Future of Dental Reception",
+  "description": "24/7 AI Voice System for Dental Clinics. Automate bookings, reduce no-shows, and handle every patient call instantly.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}

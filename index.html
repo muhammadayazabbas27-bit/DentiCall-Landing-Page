@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DentiCall AI - Future of Dental Care</title>
+    <meta name="description" content="AI-Powered Dental Assistant" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['"Inter"', 'sans-serif'],
+              heading: ['"Inter"', 'sans-serif'],
+            },
+            colors: {
+              'brand-purple': '#8B5CF6',
+              'brand-dark': '#111827',
+              'brand-gray': '#F3F4F6',
+              'accent-orange': '#F97316',
+              'accent-blue': '#06B6D4',
+              'accent-yellow': '#F59E0B',
+              'accent-green': '#10B981',
+              'accent-red': '#EF4444',
+            },
+            borderRadius: {
+              '4xl': '2rem',
+              '5xl': '2.5rem',
+            },
+            animation: {
+              'float': 'float 6s ease-in-out infinite',
+              'float-delayed': 'float 6s ease-in-out 3s infinite',
+              'blur-in': 'blurIn 0.8s ease-out forwards',
+              'fade-up': 'fadeUp 0.8s ease-out forwards',
+              'marquee': 'marquee 40s linear infinite',
+              'rainbow-x': 'rainbowX 14s linear infinite',
+              'rainbow-y': 'rainbowY 14s ease-in-out infinite',
+            },
+            keyframes: {
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-20px)' },
+              },
+              blurIn: {
+                '0%': { opacity: '0', filter: 'blur(10px)', transform: 'translateY(20px)' },
+                '100%': { opacity: '1', filter: 'blur(0)', transform: 'translateY(0)' },
+              },
+              fadeUp: {
+                 '0%': { opacity: '0', transform: 'translateY(20px)' },
+                 '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              marquee: {
+                '0%': { transform: 'translateX(0)' },
+                '100%': { transform: 'translateX(-50%)' },
+              },
+              rainbowX: {
+                '0%': { left: '110%' },
+                '100%': { left: '-25%' },
+              },
+              rainbowY: {
+                '0%': { transform: 'translateY(150px) scale(0.8)', opacity: '0' },
+                '15%': { opacity: '1' },
+                '50%': { transform: 'translateY(0px) scale(1.1)', opacity: '1' },
+                '85%': { opacity: '1' },
+                '100%': { transform: 'translateY(150px) scale(0.8)', opacity: '0' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        background-color: #FFFFFF;
+        color: #111827;
+        overflow-x: hidden;
+        font-family: "Inter", sans-serif;
+      }
+      /* Smooth Scrolling */
+      html {
+        scroll-behavior: smooth;
+      }
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #FFFFFF;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #D1D5DB;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #9CA3AF;
+      }
+      
+      .bento-card {
+        background: #F3F4F6;
+        border-radius: 24px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .bento-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.05);
+      }
+      
+      .glass-pill {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(0,0,0,0.05);
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.1/",
+    "react": "https://aistudiocdn.com/react@^19.2.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
+    "framer-motion": "https://aistudiocdn.com/framer-motion@^12.23.25",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.31.0"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
