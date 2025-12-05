@@ -291,7 +291,7 @@ End every call with confirmation, details of the call, and a polite closing mess
             updateVolume();
           },
           onmessage: async (message: LiveServerMessage) => {
-             if (message.toolCall) {
+             if (message.toolCall?.functionCalls) {
                  for (const fc of message.toolCall.functionCalls) {
                      // Handle both tools using the same webhook URL
                      if (fc.name === 'check_availability' || fc.name === 'book_call') {
@@ -313,9 +313,6 @@ End every call with confirmation, details of the call, and a polite closing mess
                              
                              if (response.ok) {
                                const data = await response.text(); 
-                               // Assuming webhook returns a useful string or JSON. 
-                               // If it's JSON, you might want to parse it. 
-                               // For now, using the text response or a default message.
                                resultMessage = data || 'Action successful.'; 
                              } else {
                                resultMessage = 'Failed to communicate with the scheduling system.';
