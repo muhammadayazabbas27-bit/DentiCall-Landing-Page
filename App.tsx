@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { motion, useScroll, useSpring } from 'framer-motion';
 import { Activity } from 'lucide-react';
