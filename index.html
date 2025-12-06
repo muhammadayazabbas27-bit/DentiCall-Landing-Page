@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -36,44 +37,91 @@
               'float-delayed': 'float 6s ease-in-out 3s infinite',
               'blur-in': 'blurIn 0.8s ease-out forwards',
               'fade-up': 'fadeUp 0.8s ease-out forwards',
-              'marquee': 'marquee 40s linear infinite',
+              'marquee': 'marquee 25s linear infinite',
               'rainbow-x': 'rainbowX 14s linear infinite',
               'rainbow-y': 'rainbowY 14s ease-in-out infinite',
+              'spin-slow': 'spin 60s linear infinite',
+              'reverse-spin-slow': 'reverseSpin 60s linear infinite',
             },
             keyframes: {
               float: {
-                '0%, 100%': { transform: 'translateY(0)' },
-                '50%': { transform: 'translateY(-20px)' },
+                '0%, 100%': { transform: 'translateY(0) translateZ(0)' },
+                '50%': { transform: 'translateY(-20px) translateZ(0)' },
               },
               blurIn: {
-                '0%': { opacity: '0', filter: 'blur(10px)', transform: 'translateY(20px)' },
-                '100%': { opacity: '1', filter: 'blur(0)', transform: 'translateY(0)' },
+                '0%': { opacity: '0', filter: 'blur(10px)', transform: 'translateY(20px) translateZ(0)' },
+                '100%': { opacity: '1', filter: 'blur(0)', transform: 'translateY(0) translateZ(0)' },
               },
               fadeUp: {
-                 '0%': { opacity: '0', transform: 'translateY(20px)' },
-                 '100%': { opacity: '1', transform: 'translateY(0)' },
+                 '0%': { opacity: '0', transform: 'translateY(20px) translateZ(0)' },
+                 '100%': { opacity: '1', transform: 'translateY(0) translateZ(0)' },
               },
               marquee: {
-                '0%': { transform: 'translateX(0)' },
-                '100%': { transform: 'translateX(-50%)' },
+                '0%': { transform: 'translateX(0) translateZ(0)' },
+                '100%': { transform: 'translateX(-100%) translateZ(0)' },
               },
               rainbowX: {
-                '0%': { left: '110%' },
-                '100%': { left: '-25%' },
+                '0%': { transform: 'translateX(110vw) translateZ(0)' }, 
+                '100%': { transform: 'translateX(-30vw) translateZ(0)' },
               },
               rainbowY: {
-                '0%': { transform: 'translateY(150px) scale(0.8)', opacity: '0' },
+                '0%': { transform: 'translateY(150px) scale(0.8) translateZ(0)', opacity: '0' },
                 '15%': { opacity: '1' },
-                '50%': { transform: 'translateY(0px) scale(1.1)', opacity: '1' },
+                '50%': { transform: 'translateY(0px) scale(1.1) translateZ(0)', opacity: '1' },
                 '85%': { opacity: '1' },
-                '100%': { transform: 'translateY(150px) scale(0.8)', opacity: '0' },
+                '100%': { transform: 'translateY(150px) scale(0.8) translateZ(0)', opacity: '0' },
+              },
+              spin: {
+                '0%': { transform: 'rotate(0deg)' },
+                '100%': { transform: 'rotate(360deg)' },
+              },
+              reverseSpin: {
+                '0%': { transform: 'rotate(0deg)' },
+                '100%': { transform: 'rotate(-360deg)' },
               }
             }
           }
         }
       }
     </script>
-<script type="importmap">
+    <style>
+      /* Global 3D Perspective Setup */
+      body {
+        perspective: 1000px;
+        transform-style: preserve-3d;
+        overflow-x: hidden;
+      }
+      
+      .perspective-container {
+        perspective: 2000px;
+      }
+      
+      .preserve-3d {
+        transform-style: preserve-3d;
+      }
+      
+      /* Smooth 3D Hover Transitions */
+      .card-3d {
+        transition: transform 0.1s ease-out;
+        transform-style: preserve-3d;
+      }
+      
+      /* Make children pop out in 3D */
+      .card-content-pop {
+        transform: translateZ(40px);
+      }
+      
+      .card-icon-pop {
+        transform: translateZ(60px);
+      }
+      
+      /* Hardware acceleration for smoother animations */
+      .will-change-transform {
+        will-change: transform;
+        backface-visibility: hidden;
+      }
+    </style>
+  <script type="importmap">
 {
   "imports": {
     "react": "https://aistudiocdn.com/react@^19.2.1",

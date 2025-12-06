@@ -10,9 +10,10 @@ const BookingForm: React.FC = () => {
   return (
     <motion.form 
       className="bg-white border border-accent p-8 rounded-2xl w-full max-w-md shadow-xl relative overflow-hidden"
-      initial={{ opacity: 0, x: 20 }}
+      initial={{ opacity: 0, x: 30 }}
       whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
     >
       <h3 className="text-xl font-heading font-bold text-text-main mb-6 tracking-tight">
         Get Started <span className="text-primary">Today</span>
