@@ -1,8 +1,8 @@
 
 import React, { useState, useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { GoogleGenAI, LiveServerMessage, Modality, FunctionDeclaration, Type } from "@google/genai";
-import { Play, Mic, MicOff, Phone, Calendar, MessageCircle, Clock, CheckCircle, Mail, Database, Shield, Zap, FileText, Users, Globe, User } from 'lucide-react';
+import { Play, Mic, MicOff, Phone, Calendar, MessageCircle, Clock, CheckCircle, Mail, Database, Shield, Zap, FileText, Users, Globe, User, AlertCircle } from 'lucide-react';
 import Orb from './Orb';
 
 // --- Audio Helper Functions ---
@@ -177,8 +177,9 @@ const Hero: React.FC = () => {
   };
 
   const startSession = async () => {
+    // Debugging: Log key presence (but not the full key for security in production logs if possible)
     if (!process.env.API_KEY) {
-      setErrorMsg("API Key not found.");
+      setErrorMsg("API Key missing. Please check configuration.");
       return;
     }
 
@@ -351,12 +352,17 @@ End every call with confirmation, details of the call, and a polite closing mess
              }
           },
           onclose: () => { stopSession(); },
-          onerror: (err) => { stopSession(); }
+          onerror: (err) => { 
+            console.error(err);
+            setErrorMsg("Connection Failed. Check settings.");
+            stopSession(); 
+          }
         }
       });
       sessionRef.current = await sessionPromise;
     } catch (error) {
       console.error(error);
+      setErrorMsg("Failed to start. Check Microphone/API Key.");
       setStatus('idle');
     }
   };
@@ -498,6 +504,21 @@ End every call with confirmation, details of the call, and a polite closing mess
         >
           DentiCall answers every call, books patients automatically, and keeps your schedule full — reducing operational overhead.
         </motion.p>
+
+        {/* Error Message Display */}
+        <AnimatePresence>
+          {errorMsg && (
+            <motion.div 
+              initial={{ opacity: 0, y: -10, height: 0 }}
+              animate={{ opacity: 1, y: 0, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className="mb-6 inline-flex items-center gap-2 px-4 py-2 bg-red-50 text-red-600 rounded-lg text-sm font-medium border border-red-100"
+            >
+              <AlertCircle size={16} />
+              {errorMsg}
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {/* Buttons */}
         <motion.div 
